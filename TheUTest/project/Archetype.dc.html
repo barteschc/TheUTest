@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/modernist-51a3afcc-c035-4c3b-bb16-46a03518a578/styles.css">
+<script src="_ds/modernist-51a3afcc-c035-4c3b-bb16-46a03518a578/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --color-bg:#141211;
+    --color-surface:#1c1a18;
+    --color-text:#f5f3f1;
+    --color-neutral-100:#1c1a18;
+    --color-neutral-200:#232120;
+    --color-neutral-300:#2e2b29;
+    --color-neutral-400:#3a3634;
+    --color-neutral-500:#6b6560;
+    --color-neutral-600:#8b8480;
+    --color-neutral-700:#a09a95;
+    --color-neutral-800:#cac4c0;
+    --color-accent:#ec3013;
+    --color-accent-200:#5a1c11;
+    --color-accent-400:#ff8368;
+    --color-accent-600:#ff4a28;
+    --color-accent-700:#ff6a4d;
+    --u-rule:#413c37;
+    --u-deep:#0e0d0c;
+  }
+  body { margin:0; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); }
+  input::placeholder { color:var(--color-neutral-600); }
+  * { box-sizing:border-box; }
+  a { color:var(--color-accent-700); text-decoration:none; }
+  a:hover { color:var(--color-accent-600); }
+  button, input { font-family:var(--font-body); }
+  button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  ::selection { background:var(--color-accent-200); }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text)">
+
+  <div style="position:sticky;top:0;z-index:20;background:var(--color-bg);border-bottom:2px solid var(--u-rule);display:flex;align-items:center;gap:var(--space-6);padding:var(--space-3) var(--space-6);flex-wrap:wrap">
+    <button onClick="{{ goLanding }}" style="display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;color:var(--color-text);cursor:pointer">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--color-accent);color:#fff;font-weight:900;font-size:16px;line-height:1">U</span>
+      <span style="font-weight:900;font-size:17px;letter-spacing:-0.02em;text-transform:uppercase">The U Test</span>
+    </button>
+    <div style="display:flex;gap:var(--space-6);margin-left:auto;align-items:center;flex-wrap:wrap">
+      <button onClick="{{ goTests }}" style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:none;border:0;padding:4px 0;color:var(--color-text);cursor:pointer" style-hover="color:var(--color-accent-700)">Tests</button>
+      <button onClick="{{ goSample }}" style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:none;border:0;padding:4px 0;color:var(--color-text);cursor:pointer" style-hover="color:var(--color-accent-700)">Sample report</button>
+      <button onClick="{{ goAccount }}" style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:none;border:0;padding:4px 0;color:var(--color-text);cursor:pointer" style-hover="color:var(--color-accent-700)">My reports</button>
+      <button onClick="{{ goTests }}" style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent);color:#fff;border:0;padding:11px 18px;cursor:pointer;text-align:left" style-hover="background:var(--color-accent-600)">Start free →</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));border-bottom:2px solid var(--u-rule)">
+        <div style="padding:64px var(--space-6) 56px;border-right:2px solid var(--u-rule)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-6)">Seven minutes. No flattery. just U</div>
+          <h1 style="font-size:clamp(42px,6.5vw,80px);line-height:0.92;letter-spacing:-0.035em;font-weight:900;margin:0 0 var(--space-6);text-wrap:balance">Understand yourself. Unlock your potential within U</h1>
+          <p style="font-size:18px;line-height:1.5;max-width:44ch;margin:0 0 var(--space-8);color:var(--color-neutral-800)">Archetype and personality assessments scored on how you behave under pressure — not how you'd like to be described at dinner. Every test is free. Buy the report if you want the part that stings.</p>
+          <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+            <button onClick="{{ goTests }}" style="font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent);color:#fff;border:0;padding:16px 22px;cursor:pointer;text-align:left" style-hover="background:var(--color-accent-600)">Take a test free →</button>
+            <button onClick="{{ goSample }}" style="font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:none;color:var(--color-text);border:2px solid var(--u-rule);padding:14px 22px;cursor:pointer;text-align:left" style-hover="background:var(--color-surface)">See a real report</button>
+          </div>
+        </div>
+        <div style="padding:64px var(--space-6) 56px;display:flex;flex-direction:column;gap:var(--space-8)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--u-rule);border:2px solid var(--u-rule)">
+            <div style="background:var(--color-bg);padding:var(--space-6)"><div style="font-size:40px;font-weight:900;letter-spacing:-0.03em">29k</div><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-top:6px">Tests completed</div></div>
+            <div style="background:var(--color-bg);padding:var(--space-6)"><div style="font-size:40px;font-weight:900;letter-spacing:-0.03em">7</div><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-top:6px">Minutes to finish</div></div>
+            <div style="background:var(--color-bg);padding:var(--space-6)"><div style="font-size:40px;font-weight:900;letter-spacing:-0.03em">2</div><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-top:6px">Page Analysis</div></div>
+            <div style="background:var(--color-bg);padding:var(--space-6)"><div style="font-size:40px;font-weight:900;letter-spacing:-0.03em">$11.99</div><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-top:6px">Per Test</div></div>
+          </div>
+          <div>
+            <svg viewBox="0 0 400 220" preserveAspectRatio="none" style="width:100%;height:210px;border:2px solid var(--u-rule);display:block;filter:grayscale(1)" role="img" aria-label="Portrait photograph placeholder">
+              <defs><pattern id="stripeA" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="8" fill="#242120"></rect><rect x="4" width="4" height="8" fill="#2c2927"></rect></pattern></defs>
+              <rect width="400" height="220" fill="url(#stripeA)"></rect>
+            </svg>
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.06em;color:var(--color-neutral-700);margin-top:var(--space-2)">[ b&amp;w portrait — subject looking straight at the lens ]</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:56px var(--space-6);border-bottom:2px solid var(--u-rule)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-8)">
+          <h2 style="font-size:32px;font-weight:900;letter-spacing:-0.025em;margin:0">The assessments</h2>
+          <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">Free to take · $11.99 per report · $32.99 for all six</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;background:var(--u-rule);border:2px solid var(--u-rule)">
+          <sc-for list="{{ tests }}" as="t" hint-placeholder-count="6">
+            <button onClick="{{ t.onStart }}" style="background:var(--color-bg);border:0;padding:var(--space-6);text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:10px;min-height:210px;color:var(--color-text)" style-hover="background:var(--color-surface)">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700)">{{ t.kicker }}</div>
+              <div style="font-size:24px;font-weight:900;letter-spacing:-0.02em;line-height:1.05">{{ t.name }}</div>
+              <div style="font-size:14px;line-height:1.45;color:var(--color-neutral-800);flex:1">{{ t.blurb }}</div>
+              <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700);border-top:2px solid var(--u-rule);padding-top:10px;width:100%">{{ t.meta }} · Take it →</div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:var(--u-rule);border-bottom:2px solid var(--u-rule)">
+        <div style="background:var(--color-bg);padding:40px var(--space-6)"><div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">01 — Take it</div><p style="margin:0;font-size:16px;line-height:1.5;color:var(--color-neutral-800)">Forced-choice statements, five per screen. No neutral option, because neutral is how people lie to themselves.</p></div>
+        <div style="background:var(--color-bg);padding:40px var(--space-6)"><div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">02 — See the verdict</div><p style="margin:0;font-size:16px;line-height:1.5;color:var(--color-neutral-800)">Your dominant archetype and one paragraph on what it costs you. Free, immediately, no email wall.</p></div>
+        <div style="background:var(--color-bg);padding:40px var(--space-6)"><div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">03 — Buy the rest</div><p style="margin:0;font-size:16px;line-height:1.5;color:var(--color-neutral-800)">Two pages: full trait scores, your failure pattern under stress, and the thirty-day correction. $11.99 once.</p></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--u-rule);border-bottom:2px solid var(--u-rule)">
+        <div style="background:var(--color-bg);padding:48px var(--space-6)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">The full picture</div>
+          <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:0.98;letter-spacing:-0.03em;font-weight:900;margin:0 0 var(--space-4)">Six tests. Six reports. $32.99.</h2>
+          <p style="font-size:17px;line-height:1.5;color:var(--color-neutral-800);max-width:46ch;margin:0 0 var(--space-6)">One archetype is a snapshot. All six is a pattern — how you lead, how you attach, how you come apart, and who you become on a bad week at work. Buy once and every report on the site is already paid for.</p>
+          <button onClick="{{ goPayBundle }}" style="font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent);color:#fff;border:0;padding:16px 22px;cursor:pointer;text-align:left" style-hover="background:var(--color-accent-600)">Get the bundle →</button>
+        </div>
+        <div style="background:var(--color-surface);padding:48px var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)">
+          <div style="display:flex;align-items:baseline;gap:var(--space-3);flex-wrap:wrap">
+            <div style="font-size:56px;font-weight:900;letter-spacing:-0.035em;line-height:1">$32.99</div>
+            <div style="font-size:20px;font-weight:700;color:var(--color-neutral-700);text-decoration:line-through">$71.94</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-700)">Save $38.95 · one payment, no subscription</div>
+          <div style="border-top:2px solid var(--u-rule);display:flex;flex-direction:column">
+            <div style="padding:var(--space-3) 0;border-bottom:2px solid var(--u-rule);font-size:15px">All six assessments, unlimited retakes</div>
+            <div style="padding:var(--space-3) 0;border-bottom:2px solid var(--u-rule);font-size:15px">Every two-page report, PDF and web copy</div>
+            <div style="padding:var(--space-3) 0;border-bottom:2px solid var(--u-rule);font-size:15px">New tests included as they're added</div>
+            <div style="padding:var(--space-3) 0;font-size:15px">14-day refund, no form to fill in</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--color-accent);color:#fff;padding:72px var(--space-6);border-bottom:2px solid var(--u-rule)">
+        <h2 style="font-size:clamp(34px,5.5vw,64px);line-height:0.95;letter-spacing:-0.03em;font-weight:900;margin:0 0 var(--space-6);max-width:22ch">Most people pay to be told they're special. The U Test costs $11.99 to be told the truth.</h2>
+        <button onClick="{{ goTests }}" style="font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:#fff;color:#141211;border:0;padding:16px 22px;cursor:pointer;text-align:left" style-hover="background:var(--color-accent-200)">Start the free test →</button>
+      </div>
+
+      <div style="padding:28px var(--space-6);display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700)">
+        <div>The U Test — assessments for people who can take it</div>
+        <div>Not therapy. Not a diagnosis.</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isTests }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:56px var(--space-6)">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">All assessments</div>
+      <h1 style="font-size:clamp(34px,4.5vw,54px);line-height:0.95;letter-spacing:-0.03em;font-weight:900;margin:0 0 var(--space-3)">Pick the one you've been avoiding.</h1>
+      <p style="font-size:17px;line-height:1.5;color:var(--color-neutral-800);max-width:52ch;margin:0 0 var(--space-6)">Every test is free end to end. The two-page report is $11.99, bought per test, never a subscription.</p>
+      <div style="border:2px solid var(--u-rule);background:var(--color-surface);padding:var(--space-4) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-8)">
+        <div>
+          <div style="font-size:20px;font-weight:900;letter-spacing:-0.02em">Or take all six and keep every report — $32.99</div>
+          <div style="font-size:14px;color:var(--color-neutral-700);margin-top:3px">Saves $38.95 against buying them one at a time.</div>
+        </div>
+        <button onClick="{{ goPayBundle }}" style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent);color:#fff;border:0;padding:14px 20px;cursor:pointer;text-align:left" style-hover="background:var(--color-accent-600)">Get the bundle →</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:var(--u-rule);border:2px solid var(--u-rule)">
+        <sc-for list="{{ tests }}" as="t" hint-placeholder-count="6">
+          <div style="background:var(--color-bg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3);min-height:260px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700)">{{ t.kicker }}</div>
+            <div style="font-size:26px;font-weight:900;letter-spacing:-0.02em;line-height:1.05">{{ t.name }}</div>
+            <div style="font-size:15px;line-height:1.45;color:var(--color-neutral-800);flex:1">{{ t.blurb }}</div>
+            <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700)">{{ t.meta }}</div>
+            <button onClick="{{ t.onStart }}" style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent);color:#fff;border:0;padding:14px 18px;cursor:pointer;text-align:left;width:100%" style-hover="background:var(--color-accent-600)">Take it free →</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="border-bottom:2px solid var(--u-rule);padding:var(--space-4) var(--space-6);display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4);flex-wrap:wrap">
+        <div style="font-size:14px;font-weight:800;letter-spacing:0.02em;text-transform:uppercase">{{ activeName }}</div>
+        <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">{{ pageLabel }}</div>
+      </div>
+      <div style="height:6px;background:var(--color-neutral-300)"><div style="height:6px;background:var(--color-accent);width:{{ progressPct }}"></div></div>
+      <div style="padding:44px var(--space-6) 80px;max-width:900px">
+        <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 var(--space-8)">Answer fast. First instinct scores truer than a considered one.</p>
+        <div style="display:flex;flex-direction:column;gap:2px;background:var(--u-rule);border:2px solid var(--u-rule)">
+          <sc-for list="{{ pageQuestions }}" as="q" hint-placeholder-count="5">
+            <div style="background:var(--color-bg);padding:var(--space-6)">
+              <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4)">
+                <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--color-accent-700);padding-top:5px">{{ q.num }}</div>
+                <div style="font-size:19px;font-weight:600;line-height:1.35;letter-spacing:-0.01em">{{ q.text }}</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;background:var(--u-rule);border:2px solid var(--u-rule)">
+                <sc-for list="{{ q.options }}" as="o" hint-placeholder-count="4">
+                  <button onClick="{{ o.onPick }}" style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border:0;padding:14px 12px;cursor:pointer;text-align:left;background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:var(--space-3);margin-top:28px;align-items:center;flex-wrap:wrap">
+          <button onClick="{{ onBack }}" style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:none;color:var(--color-text);border:2px solid var(--u-rule);padding:14px 20px;cursor:pointer;text-align:left" style-hover="background:var(--color-surface)">← Back</button>
+          <button onClick="{{ onNext }}" style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:{{ nextBg }};color:#fff;border:0;padding:16px 22px;cursor:pointer;text-align:left">{{ nextLabel }}</button>
+          <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700)">{{ answeredLabel }}</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="background:var(--u-deep);color:var(--color-text);padding:64px var(--space-6);border-bottom:2px solid var(--u-rule)">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-400);margin-bottom:var(--space-4)">{{ completeLabel }}</div>
+        <h1 style="font-size:clamp(42px,7vw,88px);line-height:0.9;letter-spacing:-0.04em;font-weight:900;margin:0 0 var(--space-6)">{{ archetype }}</h1>
+        <p style="font-size:19px;line-height:1.55;max-width:62ch;margin:0;color:var(--color-neutral-800)">{{ archetypeParagraph }}</p>
+      </div>
+
+      <div style="padding:48px var(--space-6);border-bottom:2px solid var(--u-rule)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-6)">
+          <h2 style="font-size:28px;font-weight:900;letter-spacing:-0.025em;margin:0">What we can already tell you</h2>
+          <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">Free · no email required</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--u-rule);border:2px solid var(--u-rule)">
+          <div style="background:var(--color-bg);padding:var(--space-6)">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Your strongest dimension</div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span style="font-size:22px;font-weight:900;letter-spacing:-0.02em">{{ topTrait.name }}</span><span style="font-size:22px;font-weight:900">{{ topTrait.score }}</span></div>
+            <div style="height:14px;background:var(--color-neutral-300);margin-bottom:var(--space-3)"><div style="height:14px;background:var(--color-accent);width:{{ topTrait.pct }}"></div></div>
+            <div style="font-size:15px;line-height:1.5;color:var(--color-neutral-800)">{{ topTrait.note }}</div>
+            <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700);border-top:2px solid var(--u-rule);margin-top:var(--space-4);padding-top:10px">1 of 5 dimensions shown</div>
+          </div>
+          <sc-for list="{{ freeReads }}" as="r" hint-placeholder-count="2">
+            <div style="background:var(--color-bg);padding:var(--space-6)">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">{{ r.label }}</div>
+              <div style="font-size:17px;line-height:1.5;color:var(--color-text)">{{ r.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--u-rule);border-bottom:2px solid var(--u-rule)">
+        <div style="background:var(--color-bg);padding:40px var(--space-6)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">What's in the $11.99 report</div>
+          <div style="border-top:2px solid var(--u-rule)">
+            <sc-for list="{{ reportContents }}" as="c" hint-placeholder-count="5">
+              <div style="display:flex;gap:var(--space-3);padding:var(--space-3) 0;border-bottom:2px solid var(--u-rule)">
+                <div style="font-size:12px;font-weight:700;color:var(--color-accent-700);letter-spacing:0.1em;min-width:28px;padding-top:3px">{{ c.num }}</div>
+                <div><div style="font-size:16px;font-weight:700;letter-spacing:-0.01em">{{ c.title }}</div><div style="font-size:14px;color:var(--color-neutral-700);line-height:1.4;margin-top:2px">{{ c.body }}</div></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:var(--color-surface);padding:40px var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-700)">Locked</div>
+          <div style="border:2px solid var(--u-rule);padding:var(--space-4);background:var(--color-bg)">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">Trait profile</div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);filter:blur(5px);opacity:0.65;user-select:none" aria-hidden="true">
+              <sc-for list="{{ traits }}" as="t" hint-placeholder-count="5">
+                <div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:5px"><span>{{ t.name }}</span><span>{{ t.score }}</span></div>
+                  <div style="height:10px;background:var(--color-neutral-300)"><div style="height:10px;background:var(--color-accent);width:{{ t.pct }}"></div></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="font-size:15px;line-height:1.5;color:var(--color-neutral-800)">You've seen one dimension. The other four are scored and waiting, along with your failure pattern under pressure and the thirty-day correction.</div>
+          <div style="display:flex;align-items:baseline;gap:10px"><div style="font-size:48px;font-weight:900;letter-spacing:-0.03em">$11.99</div><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">one-off · instant PDF</div></div>
+          <button onClick="{{ goPay }}" style="font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent);color:#fff;border:0;padding:18px 22px;cursor:pointer;text-align:left;width:100%" style-hover="background:var(--color-accent-600)">Unlock my report →</button>
+          <div style="border-top:2px solid var(--u-rule);padding-top:var(--space-4)">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:6px">Or go wider</div>
+            <div style="font-size:15px;line-height:1.5;color:var(--color-neutral-800);margin-bottom:var(--space-3)">All six tests and all six reports for $32.99 — the price of under three bought separately.</div>
+            <button onClick="{{ goPayBundle }}" style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:none;color:var(--color-text);border:2px solid var(--u-rule);padding:14px 18px;cursor:pointer;text-align:left;width:100%" style-hover="background:var(--color-surface)">Unlock everything — $32.99 →</button>
+          </div>
+          <button onClick="{{ goTests }}" style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:none;border:0;padding:0;color:var(--color-neutral-700);cursor:pointer;text-align:left">No thanks — take another test</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isPay }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;background:var(--u-rule);border-bottom:2px solid var(--u-rule)">
+      <div style="background:var(--color-bg);padding:56px var(--space-6)">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Checkout</div>
+        <h1 style="font-size:clamp(30px,4vw,48px);line-height:0.98;letter-spacing:-0.03em;font-weight:900;margin:0 0 28px">One payment. Two pages. Yours forever.</h1>
+        <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:460px">
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">Email for the PDF</span><input type="email" placeholder="you@example.com" style="font-size:16px;padding:13px 14px;border:2px solid var(--u-rule);background:var(--color-bg);color:var(--color-text);border-radius:0"></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">Card number</span><input placeholder="4242 4242 4242 4242" style="font-size:16px;padding:13px 14px;border:2px solid var(--u-rule);background:var(--color-bg);color:var(--color-text);border-radius:0"></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+            <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">Expiry</span><input placeholder="09 / 29" style="font-size:16px;padding:13px 14px;border:2px solid var(--u-rule);background:var(--color-bg);color:var(--color-text);border-radius:0"></label>
+            <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700)">CVC</span><input placeholder="123" style="font-size:16px;padding:13px 14px;border:2px solid var(--u-rule);background:var(--color-bg);color:var(--color-text);border-radius:0"></label>
+          </div>
+          <button onClick="{{ onPay }}" style="font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent);color:#fff;border:0;padding:18px 22px;cursor:pointer;text-align:left;width:100%" style-hover="background:var(--color-accent-600)">{{ payLabel }}</button>
+          <div style="font-size:12px;line-height:1.5;color:var(--color-neutral-700)">Full refund if you read it and think it's generic. Say so within 14 days — no argument, no form.</div>
+        </div>
+      </div>
+      <div style="background:var(--color-surface);padding:56px var(--space-6)">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:var(--space-4)">Order</div>
+        <div style="display:flex;flex-direction:column;gap:2px;background:var(--u-rule);border:2px solid var(--u-rule);margin-bottom:var(--space-4)">
+          <button onClick="{{ pickSingle }}" style="background:{{ planSingleBg }};border:0;padding:var(--space-4);text-align:left;cursor:pointer;color:var(--color-text);display:flex;gap:var(--space-3);align-items:flex-start">
+            <span style="font-size:15px;line-height:1.3;padding-top:2px">{{ planSingleMark }}</span>
+            <span>
+              <span style="display:block;font-size:17px;font-weight:800;letter-spacing:-0.01em">This report — $11.99</span>
+              <span style="display:block;font-size:14px;color:var(--color-neutral-700);margin-top:3px">{{ activeName }} only</span>
+            </span>
+          </button>
+          <button onClick="{{ pickBundle }}" style="background:{{ planBundleBg }};border:0;padding:var(--space-4);text-align:left;cursor:pointer;color:var(--color-text);display:flex;gap:var(--space-3);align-items:flex-start">
+            <span style="font-size:15px;line-height:1.3;padding-top:2px">{{ planBundleMark }}</span>
+            <span>
+              <span style="display:block;font-size:17px;font-weight:800;letter-spacing:-0.01em">All six reports — $32.99</span>
+              <span style="display:block;font-size:14px;color:var(--color-accent-700);margin-top:3px">Save $38.95 · future tests included</span>
+            </span>
+          </button>
+        </div>
+        <div style="border-top:2px solid var(--u-rule);border-bottom:2px solid var(--u-rule);padding:var(--space-4) 0;display:flex;flex-direction:column;gap:var(--space-2)">
+          <div style="font-size:22px;font-weight:900;letter-spacing:-0.02em">{{ orderTitle }}</div>
+          <div style="font-size:14px;color:var(--color-neutral-700);line-height:1.45">{{ orderDesc }}</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:var(--space-4) 0;border-bottom:2px solid var(--u-rule);font-size:15px"><span>Subtotal</span><span>{{ orderPrice }}</span></div>
+        <div style="display:flex;justify-content:space-between;padding:var(--space-4) 0;border-bottom:2px solid var(--u-rule);font-size:15px;color:var(--color-neutral-700)"><span>Tax</span><span>Included</span></div>
+        <div style="display:flex;justify-content:space-between;padding:var(--space-4) 0;font-size:22px;font-weight:900"><span>Total</span><span>{{ orderPrice }}</span></div>
+        <button onClick="{{ goResult }}" style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:none;border:0;padding:0;color:var(--color-neutral-700);cursor:pointer;text-align:left">← Back to my free result</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isReport }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:var(--space-8) var(--space-6) 64px;background:var(--u-deep)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-6);max-width:860px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700)">{{ reportBanner }}</div>
+        <div style="display:flex;gap:var(--space-3)">
+          <button onClick="{{ onPrint }}" style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:none;border:2px solid var(--u-rule);padding:9px 14px;cursor:pointer;color:var(--color-text)" style-hover="background:var(--color-bg)">Download PDF</button>
+          <button onClick="{{ goAccount }}" style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:none;border:2px solid var(--u-rule);padding:9px 14px;cursor:pointer;color:var(--color-text)" style-hover="background:var(--color-bg)">My reports</button>
+        </div>
+      </div>
+
+      <div style="max-width:860px;background:var(--color-bg);border:2px solid var(--u-rule);padding:48px 44px;margin-bottom:var(--space-6)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--u-rule);padding-bottom:var(--space-3);margin-bottom:var(--space-8)">
+          <div style="display:flex;align-items:center;gap:8px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--color-accent);color:#fff;font-weight:900;font-size:13px">U</span><span style="font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase">The U Test</span></div>
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-700)">Page 1 / 2 · {{ activeName }}</div>
+        </div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">Primary archetype</div>
+        <h1 style="font-size:clamp(38px,6vw,64px);line-height:0.92;letter-spacing:-0.035em;font-weight:900;margin:0 0 var(--space-4)">{{ archetype }}</h1>
+        <p style="font-size:17px;line-height:1.55;color:var(--color-neutral-800);margin:0 0 var(--space-8);max-width:60ch">{{ archetypeParagraph }}</p>
+
+        <div style="border-top:2px solid var(--u-rule);padding-top:var(--space-6);margin-bottom:var(--space-8)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Trait scores</div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+            <sc-for list="{{ traits }}" as="t" hint-placeholder-count="5">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px"><span>{{ t.name }}</span><span>{{ t.score }} / 100</span></div>
+                <div style="height:14px;background:var(--color-neutral-300)"><div style="height:14px;background:var(--color-accent);width:{{ t.pct }}"></div></div>
+                <div style="font-size:14px;line-height:1.45;color:var(--color-neutral-700);margin-top:6px">{{ t.note }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="border-top:2px solid var(--u-rule);padding-top:var(--space-6)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">How you read to other people</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--u-rule);border:2px solid var(--u-rule)">
+            <div style="background:var(--color-bg);padding:var(--space-4)"><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:6px">At your best</div><div style="font-size:15px;line-height:1.45">Decisive, unbothered by disapproval, the person others route hard calls through.</div></div>
+            <div style="background:var(--color-bg);padding:var(--space-4)"><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:6px">At your worst</div><div style="font-size:15px;line-height:1.45">Contemptuous of slower people, and you call that standards rather than impatience.</div></div>
+            <div style="background:var(--color-bg);padding:var(--space-4)"><div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:6px">What they won't tell you</div><div style="font-size:15px;line-height:1.45">People agree with you in the room and reopen the decision without you afterwards.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width:860px;background:var(--color-bg);border:2px solid var(--u-rule);padding:48px 44px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--u-rule);padding-bottom:var(--space-3);margin-bottom:var(--space-8)">
+          <div style="display:flex;align-items:center;gap:8px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--color-accent);color:#fff;font-weight:900;font-size:13px">U</span><span style="font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase">The U Test</span></div>
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-neutral-700)">Page 2 / 2 · {{ activeName }}</div>
+        </div>
+
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">Your failure pattern under pressure</div>
+        <h2 style="font-size:30px;font-weight:900;letter-spacing:-0.025em;line-height:1.02;margin:0 0 var(--space-4)">{{ failureTitle }}</h2>
+        <p style="font-size:17px;line-height:1.55;color:var(--color-neutral-800);margin:0 0 var(--space-8);max-width:60ch">{{ failureBody }}</p>
+
+        <div style="border-top:2px solid var(--u-rule);padding-top:var(--space-6);margin-bottom:var(--space-8)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">The thirty-day correction</div>
+          <div style="border-top:2px solid var(--u-rule)">
+            <sc-for list="{{ corrections }}" as="c" hint-placeholder-count="4">
+              <div style="display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:2px solid var(--u-rule)">
+                <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--color-accent-700);min-width:70px;padding-top:3px">{{ c.when }}</div>
+                <div><div style="font-size:17px;font-weight:700;letter-spacing:-0.01em;margin-bottom:3px">{{ c.title }}</div><div style="font-size:15px;line-height:1.45;color:var(--color-neutral-700)">{{ c.body }}</div></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:var(--color-accent);color:#fff;padding:var(--space-6);margin-bottom:var(--space-6)">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:var(--space-2)">One sentence to keep</div>
+          <div style="font-size:clamp(22px,3vw,34px);font-weight:900;letter-spacing:-0.025em;line-height:1.08;max-width:26ch">{{ keeperLine }}</div>
+        </div>
+
+        <div style="font-size:12px;line-height:1.5;color:var(--color-neutral-700);border-top:2px solid var(--u-rule);padding-top:var(--space-3)">The U Test is a self-report instrument, not a clinical assessment. It describes patterns, not pathology, and it is not a substitute for care from a qualified professional.</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isAccount }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:56px var(--space-6)">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Account</div>
+      <h1 style="font-size:clamp(32px,4.5vw,52px);line-height:0.96;letter-spacing:-0.03em;font-weight:900;margin:0 0 var(--space-2)">Your results</h1>
+      <p style="font-size:16px;color:var(--color-neutral-700);margin:0 0 var(--space-3)">alex@example.com · reports stay in your account permanently</p>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-8)">{{ bundleStatus }}</div>
+      <div style="border-top:2px solid var(--u-rule)">
+        <sc-for list="{{ history }}" as="h" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-4);align-items:center;padding:var(--space-4) 0;border-bottom:2px solid var(--u-rule)">
+            <div><div style="font-size:18px;font-weight:800;letter-spacing:-0.01em">{{ h.test }}</div><div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700);margin-top:3px">{{ h.date }}</div></div>
+            <div style="font-size:16px;font-weight:600">{{ h.result }}</div>
+            <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:{{ h.statusColor }}">{{ h.status }}</div>
+            <button onClick="{{ h.onAction }}" style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:{{ h.btnBg }};color:{{ h.btnFg }};border:2px solid var(--u-rule);padding:11px 16px;cursor:pointer;text-align:left;justify-self:start">{{ h.action }}</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+const SCALE = ["Never me", "Rarely", "Often", "That's me"];
+
+const TESTS = [
+  { id: "core", kicker: "Foundation", name: "Core Personality", meta: "20 statements · 9 min",
+    blurb: "Five factors, scored without the flattery layer most instruments bolt on.",
+    archetype: "The Operator", price: 11.99,
+    para: "You run on execution, not reflection. You are the person a group quietly relies on when a plan collapses, and you have built an identity on being unbothered — which is why you rarely notice how much of your calm is avoidance rather than strength.",
+    reads: [
+      { label: "Where it works", body: "In a crisis you are the most useful person in the room, because you act while the group is still deciding whose fault it is." },
+      { label: "Where it costs you", body: "You confuse being needed with being close. People rely on you and still don't know you, and you read that distance as their failure." }
+    ],
+    questions: [
+      "I finish things other people abandon, even after I've stopped caring about them.",
+      "I decide faster than I can explain the decision, and I resent being asked to justify it.",
+      "I would rather be respected by people I dislike than liked by people I don't respect.",
+      "I keep a private ledger of who pulls their weight, and I never show anyone the ledger.",
+      "When an argument starts to matter, I go quiet rather than escalate.",
+      "Within a week of things being calm, I start looking for something at stake.",
+      "I dislike being managed even when the manager is good at it.",
+      "I hide how much effort something took so the result looks effortless.",
+      "I trust my read of a person over anything they tell me about themselves.",
+      "When I cut someone off, I don't revisit it, and I don't explain it to them.",
+      "I would rather carry a task badly than hand it to someone who might.",
+      "I notice within minutes who in a room has actual authority.",
+      "I answer the question I think was meant rather than the one that was asked.",
+      "I have kept doing something long past the point of believing in it.",
+      "I measure a week by what got shipped, not by how it felt.",
+      "I find praise slightly embarrassing and slightly necessary.",
+      "I let people assume I'm fine because correcting them takes longer.",
+      "I'd rather be the one who leaves the party first.",
+      "When I fail, my first instinct is to look busy, not to look at it.",
+      "There is a version of me my closest people have never met."
+    ] },
+  { id: "male", kicker: "Archetype", name: "Male Archetype", meta: "20 statements · 9 min",
+    blurb: "King, Warrior, Magician, Lover — which one runs you, and which one you're faking.",
+    archetype: "The Warrior", price: 11.99,
+    para: "You mistake motion for meaning. Conflict organises you: given an enemy, a deadline or a rival, you become clear, useful and almost happy — and in the absence of one you invent friction, usually with the people closest to you, because peace feels like drift.",
+    reads: [
+      { label: "Where it works", body: "Given a real enemy — a deadline, a rival, a threat to someone you love — you are focused, brave and genuinely good to have around." },
+      { label: "Where it costs you", body: "With no enemy available you manufacture one, and the nearest candidate is usually the person who trusts you most." }
+    ],
+    questions: [
+      "I need something to push against before I feel fully awake.",
+      "I respect a person more once I've seen them take a hit and stay standing.",
+      "I'd rather act early and be wrong than wait and be right.",
+      "Two days of genuine rest and I start feeling like I'm decaying.",
+      "I test people quietly before I trust them, and they usually don't know it happened.",
+      "My worst thoughts stay entirely with me — not from discipline, from habit.",
+      "I read softness in another man as something to be corrected.",
+      "When someone tells me a problem, I start solving before they've finished speaking.",
+      "I want authority more than I want to be liked, and I've paid for that.",
+      "I have picked a fight I did not need to win and enjoyed it anyway.",
+      "I keep something in reserve in every relationship, in case I need to walk.",
+      "I measure myself against specific men, by name, without telling them.",
+      "Being protected by someone else makes me deeply uncomfortable.",
+      "I'd take pain over humiliation without thinking about it.",
+      "I have used work as a legitimate-looking place to hide.",
+      "When I'm afraid, I get louder or colder, never slower.",
+      "I decide what I am willing to feel, and then I feel that.",
+      "I want to be told I did well by someone whose opinion I can't dismiss.",
+      "I have confused being hard on people with holding a standard.",
+      "There is something I would not survive being seen doing badly."
+    ] },
+  { id: "female", kicker: "Archetype", name: "Female Archetype", meta: "20 statements · 9 min",
+    blurb: "Mother, Maiden, Huntress, Sage — the pattern you lead with and the one you starve.",
+    archetype: "The Huntress", price: 11.99,
+    para: "You are self-sufficient to a fault and you call it independence. You track what everyone in a room needs and give it to them before they ask, then resent the silence when nobody tracks you — because you have made yourself very hard to help.",
+    reads: [
+      { label: "Where it works", body: "You see what a room needs before anyone says it, and you can hold a family, a team or a friend together on competence alone." },
+      { label: "Where it costs you", body: "You have made yourself so hard to help that being unseen now feels like proof of the story rather than a result of it." }
+    ],
+    questions: [
+      "I'd rather do it myself than explain it twice and watch it done badly.",
+      "I know what people in a room need before they've worked it out themselves.",
+      "I can't accept help without immediately planning how to repay it.",
+      "I keep a quiet exit in mind in most relationships, including good ones.",
+      "I feel responsible for the mood of people I didn't upset.",
+      "When I'm hurt I go cool and courteous rather than say it.",
+      "Being seen as needing something feels worse than not getting it.",
+      "I hold standards for myself that nobody asked me to hold and nobody sees.",
+      "I would leave first rather than be left.",
+      "I routinely take on more than I was asked to, then resent the size of it.",
+      "I am the one who remembers the dates, the details and the debts.",
+      "I apologise to move things along, not because I think I was wrong.",
+      "I find rest easier to justify when I've earned it visibly.",
+      "I have stayed somewhere too long because leaving would have cost someone else.",
+      "I can tell within a minute whether a person is safe to be honest with.",
+      "I edit myself down to fit the room and call it being easy-going.",
+      "My anger arrives late, in private, and out of proportion.",
+      "I want to be chosen without having had to audition.",
+      "I keep a version of my life that no one has the full map of.",
+      "If I stopped holding it, I'm not sure who would."
+    ] },
+  { id: "shadow", kicker: "Dark side", name: "Shadow Profile", meta: "20 statements · 8 min",
+    blurb: "The traits you'd never list on a dating profile, measured anyway.",
+    archetype: "The Strategist", price: 11.99,
+    para: "You are more calculating than you let on, and you've convinced yourself it's just competence. You manage impressions the way other people manage money — carefully, constantly, and with a running account of what each relationship is worth.",
+    reads: [
+      { label: "Where it works", body: "You stay calm in rooms where other people are emotional, and you can see three moves ahead while they're still reacting to the first." },
+      { label: "Where it costs you", body: "Everything you win this way is slightly counterfeit, and some part of you keeps the receipt." }
+    ],
+    questions: [
+      "I know what to say to get what I want, and I can say it warmly.",
+      "Guilt arrives, does very little, and leaves faster than it should.",
+      "I enjoy being underestimated more than I enjoy being credited.",
+      "I hold information back because holding it is worth something.",
+      "Most people are easy to predict once you know what they're afraid of.",
+      "I can turn warmth on deliberately and it reads as real.",
+      "I keep options open longer than is fair to the people in them.",
+      "I apologise when it's useful, and I know the difference.",
+      "I remember slights for years with the specifics intact.",
+      "I have let someone believe something untrue simply by staying quiet.",
+      "I test what I can get away with in small, deniable ways.",
+      "I keep a mental price on what each relationship is worth to me.",
+      "I've made someone doubt their own account of an argument.",
+      "I find other people's need for approval easy to use.",
+      "I'd rather be feared a little than dismissed at all.",
+      "I don't fully believe anyone acts without self-interest.",
+      "I have punished someone slowly instead of confronting them once.",
+      "I'm more honest with strangers than with people who can leave.",
+      "Being caught would bother me more than having done it.",
+      "There is a thing I do that I would defend publicly and not defend alone."
+    ] },
+  { id: "attach", kicker: "Relationships", name: "Attachment Style", meta: "20 statements · 8 min",
+    blurb: "How you behave when someone gets close enough to matter.",
+    archetype: "The Withdrawer", price: 11.99,
+    para: "Closeness reads to you as a demand. You are steady, dependable and present right up until someone needs reassurance, at which point you go administrative — solving the logistics of the feeling instead of sitting in it with them.",
+    reads: [
+      { label: "Where it works", body: "You are steady, undramatic and reliable in the practical parts of love — the logistics, the money, the hard week." },
+      { label: "Where it costs you", body: "Your partner is well managed and under-met, and they've stopped saying so, which you have quietly filed as things improving." }
+    ],
+    questions: [
+      "After real closeness I need a stretch of distance to feel normal again.",
+      "Reassurance conversations exhaust me even when I love the person asking.",
+      "I plan for a relationship ending while it is going well.",
+      "I share less than my partner wants and I've decided that's the correct amount.",
+      "I feel crowded some time before I feel loved.",
+      "When someone brings me a feeling, I hand back a plan.",
+      "I keep a private interior life running inside the relationship.",
+      "I don't ask for comfort; I wait to be offered it and often decline.",
+      "I describe myself as low-maintenance and mean it as a warning.",
+      "I have ended something early to avoid being the one ended on.",
+      "I feel most affectionate slightly after the moment has passed.",
+      "Being needed is easier for me than being wanted.",
+      "I notice myself narrating the relationship to an imagined audience.",
+      "I get irritated by affection that arrives without warning.",
+      "I'd rather be misunderstood than have the long conversation.",
+      "I keep a mental list of what I've given, in case it's ever disputed.",
+      "Silence after a fight suits me better than repair.",
+      "I've stayed physically present and completely gone.",
+      "I assume I will eventually be too much or not enough.",
+      "If they knew how little I ask for, they'd understand less, not more."
+    ] },
+  { id: "work", kicker: "Work", name: "Work Under Pressure", meta: "20 statements · 8 min",
+    blurb: "Who you become on the worst week of a quarter — not in the interview.",
+    archetype: "The Closer", price: 11.99,
+    para: "You are excellent in the last twenty percent and unreliable in the first eighty. Deadlines don't stress you, they focus you, which is why you keep engineering emergencies and calling the result work ethic.",
+    reads: [
+      { label: "Where it works", body: "In the last stretch before a deadline you are worth three people, and everyone knows to put you there." },
+      { label: "Where it costs you", body: "You are paid for the finish and remembered for the wreckage, and the goodwill you spend getting there doesn't restock." }
+    ],
+    questions: [
+      "My best work happens uncomfortably close to the deadline.",
+      "When a group stalls, I take over rather than ask who should.",
+      "I skip process the moment it feels slower than my own judgement.",
+      "I'd rather own something outright than share credit for it.",
+      "Under pressure my tone goes sharp before I notice it has.",
+      "I ignore instructions I've decided are wrong, without saying so.",
+      "I stay late rather than admit I need another pair of hands.",
+      "Once something is basically done, my interest falls off a cliff.",
+      "I judge colleagues almost entirely by what they produce.",
+      "I have hit a date by spending goodwill I hadn't earned.",
+      "I volunteer for the visibly hard thing over the useful boring one.",
+      "I don't read the feedback carefully if the outcome was good.",
+      "I let a problem grow because raising it early looked like fussing.",
+      "I work best when someone might be disappointed in me.",
+      "I keep a running estimate of whether I'm the best person here.",
+      "Small talk before a hard meeting feels like a tax.",
+      "I have hidden the true state of something until I could fix it.",
+      "Being bored at work feels like a threat, not a break.",
+      "I'd take a harder job over a calmer one at the same pay.",
+      "If I stopped delivering, I don't know what I'd be worth here."
+    ] }
+];
+
+const TRAIT_NOTES = {
+  Dominance: "You take the wheel by default, including in rooms where nobody handed it to you.",
+  Volatility: "Your temper is quiet but your patience is finite, and people can feel the meter running.",
+  Detachment: "You process alone first. By the time you speak, the feeling is already filed.",
+  Drive: "Output is how you regulate. Idleness reads as decline rather than rest.",
+  Warmth: "You are loyal in action and stingy in words, and you expect that to be understood."
+};
+
+class Component extends DCLogic {
+  state = { view: "landing", activeId: "male", page: 0, answers: {}, purchased: {}, plan: "single", bundle: false };
+
+  active() { return TESTS.find(t => t.id === this.state.activeId) || TESTS[0]; }
+  go(view) { this.setState({ view }); window.scrollTo(0, 0); }
+
+  traitsFor(t) {
+    let seed = 0;
+    for (const c of t.id) seed += c.charCodeAt(0);
+    const ans = this.state.answers[t.id] || {};
+    let sum = 0, n = 0;
+    Object.values(ans).forEach(v => { sum += v; n++; });
+    const lean = n ? (sum / n) * 12 : 0;
+    return Object.keys(TRAIT_NOTES).map((name, i) => {
+      const score = Math.max(18, Math.min(96, Math.round(46 + ((seed * (i + 3)) % 37) + (i % 2 ? lean : -lean / 2))));
+      return { name, score, pct: score + "%", note: TRAIT_NOTES[name] };
+    });
+  }
+
+  renderVals() {
+    const s = this.state, t = this.active();
+    const pageQs = t.questions.slice(s.page * 5, s.page * 5 + 5);
+    const ans = s.answers[t.id] || {};
+    const totalPages = Math.ceil(t.questions.length / 5);
+    const answeredOnPage = pageQs.filter((_, i) => ans[s.page * 5 + i] !== undefined).length;
+    const allAnswered = answeredOnPage === pageQs.length;
+
+    const pick = (qi, v) => {
+      const next = Object.assign({}, s.answers[t.id], { [qi]: v });
+      this.setState({ answers: Object.assign({}, s.answers, { [t.id]: next }) });
+    };
+
+    return {
+      isLanding: s.view === "landing", isTests: s.view === "tests", isQuiz: s.view === "quiz",
+      isResult: s.view === "result", isPay: s.view === "pay", isReport: s.view === "report",
+      isAccount: s.view === "account",
+
+      goLanding: () => this.go("landing"),
+      goTests: () => this.go("tests"),
+      goAccount: () => this.go("account"),
+      goResult: () => this.go("result"),
+      goPay: () => { this.setState({ plan: "single" }); this.go("pay"); },
+      goPayBundle: () => { this.setState({ plan: "bundle" }); this.go("pay"); },
+      pickSingle: () => this.setState({ plan: "single" }),
+      pickBundle: () => this.setState({ plan: "bundle" }),
+      planSingleBg: s.plan === "single" ? "var(--color-accent-200)" : "var(--color-bg)",
+      planBundleBg: s.plan === "bundle" ? "var(--color-accent-200)" : "var(--color-bg)",
+      planSingleMark: s.plan === "single" ? "●" : "○",
+      planBundleMark: s.plan === "bundle" ? "●" : "○",
+      orderTitle: s.plan === "bundle" ? "All six reports — bundle" : t.name + " — full report",
+      orderDesc: s.plan === "bundle"
+        ? "Every test, every two-page report, including the ones you haven't taken yet"
+        : "Result: " + t.archetype + " · 2 pages · PDF + permanent web copy",
+      orderPrice: s.plan === "bundle" ? "$32.99" : "$11.99",
+      payLabel: s.plan === "bundle" ? "Pay $32.99 and unlock everything →" : "Pay $11.99 and open my report →",
+      bundleStatus: s.bundle ? "Bundle active · all reports unlocked" : "Bundle not active · $32.99 for all six",
+      goSample: () => { this.setState({ activeId: "male" }); this.go("report"); },
+      onPrint: () => window.print(),
+      onPay: () => {
+        if (s.plan === "bundle") {
+          const all = {};
+          TESTS.forEach(x => { all[x.id] = true; });
+          this.setState({ purchased: all, bundle: true });
+        } else {
+          this.setState({ purchased: Object.assign({}, s.purchased, { [t.id]: true }) });
+        }
+        this.go("report");
+      },
+
+      tests: TESTS.map(x => Object.assign({}, x, {
+        onStart: () => { this.setState({ activeId: x.id, page: 0 }); this.go("quiz"); }
+      })),
+
+      activeName: t.name,
+      archetype: t.archetype,
+      archetypeParagraph: t.para,
+      pageLabel: "Section " + (s.page + 1) + " of " + totalPages,
+      progressPct: Math.round(((s.page + (answeredOnPage / 5)) / totalPages) * 100) + "%",
+      answeredLabel: allAnswered ? "" : (5 - answeredOnPage) + " left on this screen",
+      nextLabel: s.page === totalPages - 1 ? "See my result →" : "Next five →",
+      nextBg: allAnswered ? "var(--color-accent)" : "var(--color-neutral-400)",
+      pageQuestions: pageQs.map((text, i) => {
+        const qi = s.page * 5 + i;
+        return {
+          num: String(qi + 1).padStart(2, "0"), text,
+          options: SCALE.map((label, v) => ({
+            label,
+            bg: ans[qi] === v ? "var(--color-accent)" : "var(--color-bg)",
+            fg: ans[qi] === v ? "#fff" : "var(--color-text)",
+            onPick: () => pick(qi, v)
+          }))
+        };
+      }),
+      onBack: () => {
+        if (s.page === 0) this.go("tests");
+        else this.setState({ page: s.page - 1 });
+        window.scrollTo(0, 0);
+      },
+      onNext: () => {
+        if (!allAnswered) return;
+        if (s.page === totalPages - 1) this.go("result");
+        else { this.setState({ page: s.page + 1 }); window.scrollTo(0, 0); }
+      },
+
+      traits: this.traitsFor(t),
+      topTrait: this.traitsFor(t).slice().sort((a, b) => b.score - a.score)[0],
+      freeReads: t.reads,
+      completeLabel: t.name + " complete · " + t.questions.length + " of " + t.questions.length + " answered",
+      reportContents: [
+        { num: "01", title: "Full trait scores", body: "Five dimensions, numbered, with what each score means in practice." },
+        { num: "02", title: "How you read to others", body: "At your best, at your worst, and what nobody tells you to your face." },
+        { num: "03", title: "Your failure pattern", body: "The specific way this archetype comes apart under sustained pressure." },
+        { num: "04", title: "The thirty-day correction", body: "Four concrete changes, ordered by week. No affirmations." },
+        { num: "05", title: "PDF + permanent copy", body: "Emailed instantly and kept in your account for good." }
+      ],
+      reportBanner: s.bundle ? "Bundle · all reports unlocked" : (s.purchased[t.id] ? "Purchased · full report" : "Sample report · this is what $11.99 buys"),
+      failureTitle: "You escalate when you should absorb.",
+      failureBody: "Under sustained pressure you narrow. Options that felt obvious a month ago disappear, and the one move left is always the forceful one. It works often enough to keep you doing it — but the cost lands on other people, on a delay, and you rarely connect the invoice to the purchase.",
+      corrections: [
+        { when: "Week 1", title: "Name the pressure out loud, once a day", body: "One sentence to one person about what's actually loading you. Not a solution — a statement." },
+        { when: "Week 2", title: "Delay one decision by 24 hours", body: "Pick a call that feels urgent and isn't. Notice the world holding together without your speed." },
+        { when: "Week 3", title: "Ask for something you'd normally do alone", body: "Small and real. The point is tolerating the exposure, not the help." },
+        { when: "Week 4", title: "Audit who reopened your decisions", body: "List the calls that got quietly revisited. That list is your real influence score." }
+      ],
+      keeperLine: "Force is the fastest tool you own and the most expensive one you use.",
+
+      history: [
+        { test: "Male Archetype", date: "12 Aug 2026", result: "The Warrior", status: "Report purchased", statusColor: "var(--color-accent-700)", action: "Open report", btnBg: "var(--color-bg)", btnFg: "var(--color-text)", onAction: () => { this.setState({ activeId: "male" }); this.go("report"); } },
+        { test: "Core Personality", date: "12 Aug 2026", result: "The Operator", status: "Free result only", statusColor: "var(--color-neutral-700)", action: "Unlock $11.99", btnBg: "var(--color-accent)", btnFg: "#fff", onAction: () => { this.setState({ activeId: "core" }); this.setState({ plan: "single" }); this.go("pay"); } },
+        { test: "Attachment Style", date: "03 Jul 2026", result: "The Withdrawer", status: "Free result only", statusColor: "var(--color-neutral-700)", action: "Unlock $11.99", btnBg: "var(--color-accent)", btnFg: "#fff", onAction: () => { this.setState({ activeId: "attach" }); this.setState({ plan: "single" }); this.go("pay"); } }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
