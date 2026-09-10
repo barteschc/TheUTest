@@ -42,15 +42,19 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
       });
 
       if (result?.error) {
-        setError("Wrong email or password.");
+        setError(
+          result.error === "CredentialsSignin"
+            ? "Wrong email or password."
+            : `Sign-in error: ${result.error}`
+        );
         setBusy(false);
         return;
       }
 
       router.push(callbackUrl);
       router.refresh();
-    } catch {
-      setError("Something went wrong. Try again.");
+    } catch (err) {
+      setError(`Something went wrong: ${err instanceof Error ? err.message : String(err)}`);
       setBusy(false);
     }
   }
