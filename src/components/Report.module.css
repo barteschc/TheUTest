@@ -1,0 +1,216 @@
+.wrap {
+  padding: var(--space-8) var(--space-6) 64px;
+  background: var(--u-deep);
+}
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+  max-width: 860px;
+}
+.topActions {
+  display: flex;
+  gap: var(--space-3);
+}
+.topBtn {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: 2px solid var(--u-rule);
+  padding: 9px 14px;
+  cursor: pointer;
+  color: var(--color-text);
+  text-decoration: none;
+  display: inline-flex;
+}
+.topBtn:hover {
+  background: var(--color-bg);
+}
+
+.sheet {
+  max-width: 860px;
+  background: var(--color-bg);
+  border: 2px solid var(--u-rule);
+  padding: 48px 44px;
+  margin-bottom: var(--space-6);
+}
+.sheetHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid var(--u-rule);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brandMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 900;
+  font-size: 13px;
+}
+.brandName {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pageOf {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+}
+
+.sheet h1 {
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  margin: 0 0 var(--space-4);
+}
+.sheetLede {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-neutral-800);
+  margin: 0 0 var(--space-8);
+  max-width: 60ch;
+}
+
+.block {
+  border-top: 2px solid var(--u-rule);
+  padding-top: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.traitRow {
+  margin-bottom: var(--space-4);
+}
+.traitHead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.traitBar {
+  height: 14px;
+  background: var(--color-neutral-300);
+}
+.traitBarFill {
+  height: 14px;
+  background: var(--color-accent);
+}
+.traitNote {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-neutral-700);
+  margin-top: 6px;
+}
+
+.howGrid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  border: 2px solid var(--u-rule);
+}
+.howCell {
+  padding: var(--space-4);
+}
+.howLabel {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+  margin-bottom: 6px;
+}
+.howBody {
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.failureTitle {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  margin: 0 0 var(--space-4);
+}
+.failureBody {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-neutral-800);
+  margin: 0 0 var(--space-8);
+  max-width: 60ch;
+}
+
+.correctionRow {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 2px solid var(--u-rule);
+}
+.correctionRow:first-child {
+  border-top: 2px solid var(--u-rule);
+}
+.correctionWhen {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-700);
+  min-width: 70px;
+  padding-top: 3px;
+}
+.correctionTitle {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 3px;
+}
+.correctionBody {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-neutral-700);
+}
+
+.keeper {
+  background: var(--color-accent);
+  color: #fff;
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.keeperLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+.keeperLine {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  max-width: 26ch;
+}
+
+.disclaimer {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-neutral-700);
+  border-top: 2px solid var(--u-rule);
+  padding-top: var(--space-3);
+}

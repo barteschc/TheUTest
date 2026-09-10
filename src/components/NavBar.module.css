@@ -1,0 +1,81 @@
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--u-rule);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-3) var(--space-6);
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.brandName {
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  gap: var(--space-6);
+  margin-left: auto;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.link:hover {
+  color: var(--color-accent-700);
+}
+
+.cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--color-accent);
+  color: #fff;
+  border: 0;
+  padding: 11px 18px;
+  cursor: pointer;
+}
+.cta:hover {
+  background: var(--color-accent-600);
+}

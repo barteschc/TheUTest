@@ -1,0 +1,234 @@
+.hero {
+  background: var(--u-deep);
+  color: var(--color-text);
+  padding: 64px var(--space-6);
+  border-bottom: 2px solid var(--u-rule);
+}
+.hero h1 {
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 0 0 var(--space-6);
+}
+.hero p {
+  font-size: 19px;
+  line-height: 1.55;
+  max-width: 62ch;
+  margin: 0;
+  color: var(--color-neutral-800);
+}
+.completeLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-400);
+  margin-bottom: var(--space-4);
+}
+
+.section {
+  padding: 48px var(--space-6);
+  border-bottom: 2px solid var(--u-rule);
+}
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+.sectionHead h2 {
+  font-size: 28px;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.freeGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  border: 2px solid var(--u-rule);
+}
+.cell {
+  padding: var(--space-6);
+}
+.readLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  margin-bottom: var(--space-4);
+}
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.topName {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.topScore {
+  font-size: 22px;
+  font-weight: 900;
+}
+.bar {
+  height: 14px;
+  background: var(--color-neutral-300);
+  margin-bottom: var(--space-3);
+}
+.barFill {
+  height: 14px;
+  background: var(--color-accent);
+}
+.note {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-neutral-800);
+}
+.shownOf {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+  border-top: 2px solid var(--u-rule);
+  margin-top: var(--space-4);
+  padding-top: 10px;
+}
+.readBody {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.lowerGrid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  border-bottom: 2px solid var(--u-rule);
+}
+.contentsCell {
+  padding: 40px var(--space-6);
+}
+.contentsList {
+  border-top: 2px solid var(--u-rule);
+}
+.contentsRow {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 2px solid var(--u-rule);
+}
+.contentsNum {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-accent-700);
+  letter-spacing: 0.1em;
+  min-width: 28px;
+  padding-top: 3px;
+}
+.contentsTitle {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.contentsBody {
+  font-size: 14px;
+  color: var(--color-neutral-700);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.paywallCell {
+  background: var(--color-surface) !important;
+  padding: 40px var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.lockedLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+}
+.lockedBox {
+  border: 2px solid var(--u-rule);
+  padding: var(--space-4);
+  background: var(--color-bg);
+}
+.lockedTitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  margin-bottom: var(--space-3);
+}
+.lockedTraits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  filter: blur(5px);
+  opacity: 0.65;
+  user-select: none;
+}
+.lockedTraitRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.lockedBar {
+  height: 10px;
+  background: var(--color-neutral-300);
+}
+.lockedBarFill {
+  height: 10px;
+  background: var(--color-accent);
+}
+.pitch {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-neutral-800);
+}
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.priceNow {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.wideBox {
+  border-top: 2px solid var(--u-rule);
+  padding-top: var(--space-4);
+}
+.wideLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  margin-bottom: 6px;
+}
+.wideBody {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-neutral-800);
+  margin-bottom: var(--space-3);
+}
+
+.ownedBox {
+  border: 2px solid var(--u-rule);
+  padding: var(--space-6);
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}

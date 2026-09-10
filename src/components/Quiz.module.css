@@ -1,0 +1,92 @@
+.head {
+  border-bottom: 2px solid var(--u-rule);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.headName {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.progressTrack {
+  height: 6px;
+  background: var(--color-neutral-300);
+}
+.progressFill {
+  height: 6px;
+  background: var(--color-accent);
+}
+
+.body {
+  padding: 44px var(--space-6) 80px;
+  max-width: 900px;
+}
+.instruction {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+  margin: 0 0 var(--space-8);
+}
+
+.qList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--u-rule);
+  border: 2px solid var(--u-rule);
+}
+.qCard {
+  background: var(--color-bg);
+  padding: var(--space-6);
+}
+.qHead {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.qNum {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-700);
+  padding-top: 5px;
+}
+.qText {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 2px;
+  background: var(--u-rule);
+  border: 2px solid var(--u-rule);
+}
+.option {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 0;
+  padding: 14px 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+}

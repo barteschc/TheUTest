@@ -1,0 +1,17 @@
+.wrap {
+  padding: 56px var(--space-6);
+  max-width: 440px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.foot {
+  margin-top: var(--space-4);
+  font-size: 14px;
+  color: var(--color-neutral-700);
+}
