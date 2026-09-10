@@ -1,12 +1,9 @@
 "use client";
 
-import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import type { StripeElementsOptions } from "@stripe/stripe-js";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { getStripe } from "@/lib/stripe-client";
 import { BUNDLE_PRICE_CENTS, formatPrice, getTest, SINGLE_PRICE_CENTS, TESTS } from "@/lib/tests";
 import styles from "./Checkout.module.css";
 
@@ -14,88 +11,7 @@ const BUNDLE_SAVINGS_CENTS = SINGLE_PRICE_CENTS * TESTS.length - BUNDLE_PRICE_CE
 
 type Plan = "single" | "bundle";
 
-function PaymentForm({
-  email,
-  setEmail,
-  onSuccess,
-}: {
-  email: string;
-  setEmail: (v: string) => void;
-  onSuccess: () => void;
-}) {
-  const stripe = useStripe();
-  const elements = useElements();
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!stripe || !elements) return;
-    setSubmitting(true);
-    setError(null);
-
-    const { error: submitError, paymentIntent } = await stripe.confirmPayment({
-      elements,
-      redirect: "if_required",
-      confirmParams: {
-        payment_method_data: { billing_details: { email: email || undefined } },
-      },
-    });
-
-    if (submitError) {
-      setError(submitError.message || "Payment failed. Check your details and try again.");
-      setSubmitting(false);
-      return;
-    }
-
-    if (paymentIntent?.status === "succeeded") {
-      await fetch("/api/checkout/confirm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paymentIntentId: paymentIntent.id }),
-      }).catch(() => {});
-      onSuccess();
-      return;
-    }
-
-    setError("Payment did not complete. Try a different payment method.");
-    setSubmitting(false);
-  }
-
-  return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <label className="field">
-        <span>Email for the PDF</span>
-        <input
-          className="input"
-          type="text"
-          inputMode="email"
-          autoComplete="email"
-          required
-          placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-
-      <div className={styles.paymentBox}>
-        <PaymentElement />
-      </div>
-
-      {error && <div className="error-text">{error}</div>}
-
-      <button type="submit" className="btn btn-primary btn-block" disabled={!stripe || submitting}>
-        {submitting ? "Processing…" : "Pay and open my report →"}
-      </button>
-      <div className={styles.refundNote}>
-        Full refund if you read it and think it&apos;s generic. Say so within 14 days — no argument, no form.
-      </div>
-    </form>
-  );
-}
-
-export function CheckoutClient({ publishableKey }: { publishableKey: string }) {
-  const router = useRouter();
+export function CheckoutClient() {
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
 
@@ -105,60 +21,28 @@ export function CheckoutClient({ publishableKey }: { publishableKey: string }) {
   const [plan, setPlan] = useState<Plan>(
     searchParams.get("plan") === "bundle" || !activeTest ? "bundle" : "single"
   );
-  const [email, setEmail] = useState(session?.user?.email || "");
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setEmail((prev) => prev || session?.user?.email || "");
-  }, [session?.user?.email]);
-
-  useEffect(() => {
-    if (status !== "authenticated") return;
-    if (plan === "single" && !activeTest) return;
-
-    setClientSecret(null);
-    setError(null);
-
-    fetch("/api/checkout/create-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plan, testId: activeTest?.id }),
-    })
-      .then(async (r) => {
-        const data = await r.json();
-        if (!r.ok) throw new Error(data.error || `Could not start checkout (HTTP ${r.status}).`);
-        setClientSecret(data.clientSecret);
-      })
-      .catch((e) => setError(`[create-intent] ${e instanceof Error ? e.message : String(e)}`));
-  }, [status, plan, activeTest]);
 
   const priceCents = plan === "bundle" ? BUNDLE_PRICE_CENTS : activeTest?.priceCents ?? 0;
 
-  const options: StripeElementsOptions | undefined = useMemo(
-    () =>
-      clientSecret
-        ? {
-            clientSecret,
-            appearance: {
-              theme: "night" as const,
-              variables: {
-                colorPrimary: "#ec3013",
-                colorBackground: "#141211",
-                colorText: "#f5f3f1",
-                colorDanger: "#ff8368",
-                fontFamily: "Archivo, system-ui, sans-serif",
-                borderRadius: "0px",
-                spacingUnit: "4px",
-              },
-            },
-          }
-        : undefined,
-    [clientSecret]
-  );
+  async function handleContinue() {
+    setSubmitting(true);
+    setError(null);
 
-  function handleSuccess() {
-    router.push(plan === "bundle" || !activeTest ? "/account" : `/tests/${activeTest.id}/report`);
+    try {
+      const res = await fetch("/api/checkout/create-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan, testId: activeTest?.id }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || `Could not start checkout (HTTP ${res.status}).`);
+      window.location.href = data.url;
+    } catch (e) {
+      setError(`[create-session] ${e instanceof Error ? e.message : String(e)}`);
+      setSubmitting(false);
+    }
   }
 
   if (status === "loading") {
@@ -195,16 +79,19 @@ export function CheckoutClient({ publishableKey }: { publishableKey: string }) {
           Checkout
         </div>
         <h1>One payment. Two pages. Yours forever.</h1>
+        <p style={{ color: "var(--color-neutral-700)", fontSize: 15, marginBottom: "var(--space-6)" }}>
+          You&apos;ll enter your card details on Stripe&apos;s secure payment page next, then land straight back
+          here with your report unlocked.
+        </p>
 
         {error && <div className="error-text" style={{ marginBottom: "var(--space-4)" }}>{error}</div>}
 
-        {clientSecret && options ? (
-          <Elements stripe={getStripe(publishableKey)} options={options}>
-            <PaymentForm email={email} setEmail={setEmail} onSuccess={handleSuccess} />
-          </Elements>
-        ) : (
-          !error && <div style={{ color: "var(--color-neutral-700)" }}>Preparing checkout…</div>
-        )}
+        <button type="button" className="btn btn-primary btn-block" onClick={handleContinue} disabled={submitting}>
+          {submitting ? "Redirecting to Stripe…" : "Continue to payment →"}
+        </button>
+        <div className={styles.refundNote} style={{ marginTop: "var(--space-4)" }}>
+          Full refund if you read it and think it&apos;s generic. Say so within 14 days — no argument, no form.
+        </div>
       </div>
 
       <div className={styles.right}>
