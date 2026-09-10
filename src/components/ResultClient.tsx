@@ -123,7 +123,7 @@ export function ResultClient({ test }: { test: Test }) {
             <>
               <div className={styles.lockedLabel}>Locked</div>
               <div className={styles.lockedBox}>
-                <div className={styles.lockedTitle}>Trait profile</div>
+                <div className={styles.lockedTitle}>Trait profile · {test.framework}</div>
                 <div className={styles.lockedTraits} aria-hidden="true">
                   {traits.map((t) => (
                     <div key={t.name}>

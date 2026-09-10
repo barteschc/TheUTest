@@ -37,8 +37,11 @@ export function ReportView({ test, traits, banner }: { test: Test; traits: Trait
         <p className={styles.sheetLede}>{test.para}</p>
 
         <div className={styles.block}>
-          <div className="kicker" style={{ marginBottom: "var(--space-4)" }}>
+          <div className="kicker" style={{ marginBottom: "6px" }}>
             Trait scores
+          </div>
+          <div style={{ fontSize: 13, color: "var(--color-neutral-700)", marginBottom: "var(--space-4)" }}>
+            Scored against {test.framework}
           </div>
           <div>
             {traits.map((t) => (

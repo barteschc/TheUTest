@@ -1,4 +1,4 @@
-import { Test, TRAIT_NOTES } from "./tests";
+import { Test } from "./tests";
 
 export interface Trait {
   name: string;
@@ -10,25 +10,24 @@ export interface Trait {
 export type Answers = Record<number, number>;
 
 /**
- * Deterministic pseudo-scoring: a per-test seed (from its id) plus the lean
- * of the user's own answers, so retaking a test with different answers
- * shifts scores while the same answers always reproduce the same report.
+ * Real weighted scoring: each test's 20 questions are written in 4
+ * interleaved blocks of 5, so question i loads on dimensions[i % 5].
+ * A dimension's score is the mean of its 4 answers (0–3 scale) rescaled
+ * to 0–100. No answers yet for a dimension defaults to a neutral 50
+ * rather than 0, so a partially-answered or unanswered (sample) report
+ * doesn't read as a false negative.
  */
 export function traitsFor(test: Test, answers: Answers): Trait[] {
-  let seed = 0;
-  for (const c of test.id) seed += c.charCodeAt(0);
+  return test.dimensions.map((dim, dIdx) => {
+    const values = [dIdx, dIdx + 5, dIdx + 10, dIdx + 15]
+      .map((qi) => answers[qi])
+      .filter((v): v is number => v !== undefined);
 
-  const values = Object.values(answers);
-  const n = values.length;
-  const sum = values.reduce((a, b) => a + b, 0);
-  const lean = n ? (sum / n) * 12 : 0;
+    const score = values.length
+      ? Math.round((values.reduce((a, b) => a + b, 0) / (values.length * 3)) * 100)
+      : 50;
 
-  return Object.keys(TRAIT_NOTES).map((name, i) => {
-    const score = Math.max(
-      18,
-      Math.min(96, Math.round(46 + ((seed * (i + 3)) % 37) + (i % 2 ? lean : -lean / 2)))
-    );
-    return { name, score, pct: `${score}%`, note: TRAIT_NOTES[name] };
+    return { name: dim.name, score, pct: `${score}%`, note: dim.note };
   });
 }
 
