@@ -68,7 +68,9 @@ function PaymentForm({
         <span>Email for the PDF</span>
         <input
           className="input"
-          type="email"
+          type="text"
+          inputMode="email"
+          autoComplete="email"
           required
           placeholder="you@example.com"
           value={email}
