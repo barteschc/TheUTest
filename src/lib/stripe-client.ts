@@ -2,9 +2,15 @@ import { loadStripe, Stripe } from "@stripe/stripe-js";
 
 let stripePromise: Promise<Stripe | null> | null = null;
 
-export function getStripe() {
+/**
+ * Takes the publishable key as an argument (passed down from a server
+ * component reading a plain, non-NEXT_PUBLIC_-prefixed env var) rather than
+ * reading process.env directly here. Keeps the key out of the special
+ * NEXT_PUBLIC_ build-time-inlining path entirely.
+ */
+export function getStripe(publishableKey: string) {
   if (!stripePromise) {
-    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_test_replace_me");
+    stripePromise = loadStripe(publishableKey);
   }
   return stripePromise;
 }

@@ -92,7 +92,7 @@ function PaymentForm({
   );
 }
 
-export function CheckoutClient() {
+export function CheckoutClient({ publishableKey }: { publishableKey: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
@@ -197,7 +197,7 @@ export function CheckoutClient() {
         {error && <div className="error-text" style={{ marginBottom: "var(--space-4)" }}>{error}</div>}
 
         {clientSecret && options ? (
-          <Elements stripe={getStripe()} options={options}>
+          <Elements stripe={getStripe(publishableKey)} options={options}>
             <PaymentForm email={email} setEmail={setEmail} onSuccess={handleSuccess} />
           </Elements>
         ) : (
