@@ -127,10 +127,10 @@ export function CheckoutClient({ publishableKey }: { publishableKey: string }) {
     })
       .then(async (r) => {
         const data = await r.json();
-        if (!r.ok) throw new Error(data.error || "Could not start checkout.");
+        if (!r.ok) throw new Error(data.error || `Could not start checkout (HTTP ${r.status}).`);
         setClientSecret(data.clientSecret);
       })
-      .catch((e) => setError(e.message));
+      .catch((e) => setError(`[create-intent] ${e instanceof Error ? e.message : String(e)}`));
   }, [status, plan, activeTest]);
 
   const priceCents = plan === "bundle" ? BUNDLE_PRICE_CENTS : activeTest?.priceCents ?? 0;
